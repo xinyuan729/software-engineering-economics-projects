@@ -161,7 +161,7 @@
                       <span slot="label">
                         <span>基本传染数:</span>
                         <!-- <el-tooltip effect="dark" content="平均每位感染者在传染期内使易感者个体致病的数量" placement="right">
-                          <i class="el-icon-question el-icon--right"></i> 
+                          <i class="el-icon-question el-icon--right"></i>
                         </el-tooltip> -->
                       </span>
                       <el-input v-model="infectionParamSeir['R0']" placeholder="请输入内容"></el-input>
@@ -344,7 +344,7 @@
         </el-table>
       </el-col>
     </el-row>
-    <el-drawer :title="drawType == 'flood' ? '暴雨灾害模拟结果' : '疫情模拟结果'" :visible.sync="drawer" size="78%">
+    <el-drawer :title="drawType == 'flood' ? '暴雨灾害模拟结果' : '疫情模拟结果'" :visible.sync="drawer" size="100%">
       <flodsimulation :type="drawType" :status="status" :metric="metric" v-show="drawType == 'flood'" />
       <infectionSimulation :type="drawType" :infectionModel="infectionModel" :status="status"
         v-show="drawType == 'infection'" />
