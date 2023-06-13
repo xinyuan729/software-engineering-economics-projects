@@ -1457,7 +1457,9 @@ export default {
 .containerCard {
   flex-grow: 1;
   flex-shrink: 1;
-  height: 100%;
+  //height: 100%;
+  height: 500px;
+  width: 500px;
   padding: 10px;
   overflow: hidden;
 }

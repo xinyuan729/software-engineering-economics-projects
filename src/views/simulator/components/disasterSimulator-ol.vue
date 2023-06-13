@@ -231,6 +231,21 @@
                 </div>
               </el-popover>
             </div>
+            <div id="planGeneration" class="planGeneration">
+              <el-card>
+                <h4 style="text-align: center">联防联控预案生成系统</h4>
+                <el-cascader
+                  v-model="selectedOptions"
+                  :options="options"
+                  :props="props"
+                  expand-trigger="hover"
+                  multiple
+                  clearable
+                  @change="handlePlanSelectChange"
+                  style="margin-left: 150px"
+                ></el-cascader>
+              </el-card>
+            </div>
           </div>
         </div>
       </div>
@@ -1089,6 +1104,83 @@ export default {
         address: "",
         value: 0,
       },
+      options: [
+        {
+          value: '1',
+          label: '一级选项1',
+          children: [
+            {
+              value: '11',
+              label: '二级选项1-1',
+              children: [
+                {
+                  value: '111',
+                  label: '三级选项1-1-1'
+                },
+                {
+                  value: '112',
+                  label: '三级选项1-1-2'
+                }
+              ]
+            },
+            {
+              value: '12',
+              label: '二级选项1-2',
+              children: [
+                {
+                  value: '121',
+                  label: '三级选项1-2-1'
+                },
+                {
+                  value: '122',
+                  label: '三级选项1-2-2'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          value: '2',
+          label: '一级选项2',
+          children: [
+            {
+              value: '21',
+              label: '二级选项2-1',
+              children: [
+                {
+                  value: '211',
+                  label: '三级选项2-1-1'
+                },
+                {
+                  value: '212',
+                  label: '三级选项2-1-2'
+                }
+              ]
+            },
+            {
+              value: '22',
+              label: '二级选项2-2',
+              children: [
+                {
+                  value: '221',
+                  label: '三级选项2-2-1'
+                },
+                {
+                  value: '222',
+                  label: '三级选项2-2-2'
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      props: {
+        value: 'value',
+        label: 'label',
+        children: 'children',
+        multiple: true
+      },
+      selectedOptions: [] // 用于保存用户选择的选项
     };
   },
   components: {
@@ -1786,6 +1878,10 @@ export default {
     closePopoverHostipal() {
       this.$refs.mapInfoPopoverHostipal.showPopper = false;
     },
+    handlePlanSelectChange(selectedOptions) {
+      this.selectedOptions = selectedOptions;
+      console.log('用户选择的选项：', this.selectedOptions);
+    }
   },
 };
 </script>
@@ -1836,7 +1932,7 @@ export default {
 
 .resultCanvas {
   height: calc(100% - 96px);
-  height: 100%;
+  //height: 100%;
   display: flex;
   flex-direction: row;
   overflow: hidden;
@@ -1895,11 +1991,17 @@ export default {
 
 }
 
+.planGeneration{
+  width: 600px;
+  height: 1200px;
+}
 
 .containerCard {
   flex-grow: 1;
   flex-shrink: 1;
-  height: 100%;
+  //height: 100%;
+  height: 500px;
+  width: 500px;
   padding: 10px;
   overflow: hidden;
 }
